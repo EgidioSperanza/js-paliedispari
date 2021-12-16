@@ -138,12 +138,12 @@ sendNumber.addEventListener("click", () => {
       }
     } else {
       if (evenChoose) {
-        winner.textContent = `You Lose! Hai scelto 
+        winner.textContent = `You Lose!!! Hai scelto 
         ${(evenChoose) ? "pari" : "dispari"} 
         inserendo il numero ${num}, mentre il computer ha generato randomicamente 
         ${computerNum}. Sommando i due numeri otteniamo ${sum} che è un valore ${(sum%2===0) ? "pari" : "dispari"}`;
       } else {
-        winner.textContent = `You Win! Hai scelto 
+        winner.textContent = `You Win!!! Hai scelto 
         ${(evenChoose) ? "pari" : "dispari"} 
         inserendo il numero ${num}, mentre il computer ha generato randomicamente 
         ${computerNum}. Sommando i due numeri otteniamo ${sum} che è un valore ${(sum%2===0) ? "pari" : "dispari"}`;
