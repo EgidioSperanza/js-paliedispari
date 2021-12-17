@@ -14,9 +14,9 @@ function strType(e){
 function isPalindrome(e) {
   //rimuoviamo spazi di inizio fine  e rendiamo tutto minuscolo
   e = e.toLowerCase().trim();
-  console.log(e);
+  // console.log(e);//DEBUG
   eReverse = e.split("").reverse().join("");
-  console.log(eReverse);
+  // console.log(eReverse);//DEBUG
   if (e === eReverse) return true;
   else return false;
 }
@@ -39,7 +39,6 @@ for(i=0;i<e.length;i++){
     return false;
   }
 }
-
 function addResponseClass(e) {
   e.classList.add(
     "container",
@@ -68,7 +67,7 @@ sendWord.addEventListener("click", () => {
     response.textContent = `"${userString}" è un numero ed inoltre non è in forma Palindroma`;
   } else if (isPalindrome(userString)) {
     response.textContent = `"${userString}" risulta essere una ${strType(userString)} Palindroma`;
-    console.log(userString);
+    // console.log(userString);//DEBUG
   } else {
     response.textContent = `"${userString}" risulta non essere una ${strType(userString)} Palindroma`;
   }
@@ -86,7 +85,7 @@ sendWordFor.addEventListener("click", () => {
     responseFor.textContent = `"${userStringFor}" è un numero ed inoltre non è in forma Palindroma`;
   } else if (isPalindromeFor(userStringFor)) {
     responseFor.textContent = `"${userStringFor}" risulta essere una ${strType(userStringFor)} Palindroma`;
-    console.log(userStringFor);
+    // console.log(userStringFor);//DEBUG
   } else {
     responseFor.textContent = `"${userStringFor}" risulta non essere una ${strType(userStringFor)} Palindroma`;
   }
