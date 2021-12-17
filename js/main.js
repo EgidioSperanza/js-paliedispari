@@ -7,9 +7,9 @@ function strType(e){
   }
   if(count>0){
     return "Stringa";
-  } else{
-    return "parola";
-  }
+  } 
+  return "parola";
+  
 }
 function isPalindrome(e) {
   //rimuoviamo spazi di inizio fine  e rendiamo tutto minuscolo
@@ -18,7 +18,7 @@ function isPalindrome(e) {
   eReverse = e.split("").reverse().join("");
   // console.log(eReverse);//DEBUG
   if (e === eReverse) return true;
-  else return false;
+  return false;
 }
 function isPalindromeFor(e) {
   let nospace;
@@ -35,9 +35,8 @@ for(i=0;i<e.length;i++){
 }
   if(nospace.toLowerCase()===reverseStr.toLowerCase()){
     return true;
-  }else{
-    return false;
   }
+  return false;
 }
 function addResponseClass(e) {
   e.classList.add(
