@@ -1,15 +1,14 @@
-function strType(e){
-  let count=0;
-  for(let i=0;i<e.length;i++){
-    if(e[i]===" "){
+function strType(e) {
+  let count = 0;
+  for (let i = 0; i < e.length; i++) {
+    if (e[i] === " ") {
       count++;
     }
   }
-  if(count>0){
+  if (count > 0) {
     return "Stringa";
-  } 
+  }
   return "parola";
-  
 }
 function isPalindrome(e) {
   //rimuoviamo spazi di inizio fine  e rendiamo tutto minuscolo
@@ -22,17 +21,17 @@ function isPalindrome(e) {
 function isPalindromeFor(e) {
   let nospace;
   let reverseStr;
-  for(let i=e.length-1;i>=0;i--){
-    if(e[i]!==" "){
-      reverseStr+= e[i];
+  for (let i = e.length - 1; i >= 0; i--) {
+    if (e[i] !== " ") {
+      reverseStr += e[i];
     }
   }
-for(i=0;i<e.length;i++){
-  if(e[i]!==" "){
-    nospace+= e[i];
+  for (i = 0; i < e.length; i++) {
+    if (e[i] !== " ") {
+      nospace += e[i];
+    }
   }
-}
-  return nospace.toLowerCase()===reverseStr.toLowerCase();
+  return nospace.toLowerCase() === reverseStr.toLowerCase();
 }
 function addResponseClass(e) {
   e.classList.add(
@@ -61,10 +60,14 @@ sendWord.addEventListener("click", () => {
   } else if (!isNaN(userString)) {
     response.textContent = `"${userString}" è un numero ed inoltre non è in forma Palindroma`;
   } else if (isPalindrome(userString)) {
-    response.textContent = `"${userString}" risulta essere una ${strType(userString)} Palindroma`;
+    response.textContent = `"${userString}" risulta essere una ${strType(
+      userString
+    )} Palindroma`;
     // console.log(userString);//DEBUG
   } else {
-    response.textContent = `"${userString}" risulta non essere una ${strType(userString)} Palindroma`;
+    response.textContent = `"${userString}" risulta non essere una ${strType(
+      userString
+    )} Palindroma`;
   }
 });
 
@@ -79,17 +82,45 @@ sendWordFor.addEventListener("click", () => {
   } else if (!isNaN(userStringFor)) {
     responseFor.textContent = `"${userStringFor}" è un numero ed inoltre non è in forma Palindroma`;
   } else if (isPalindromeFor(userStringFor)) {
-    responseFor.textContent = `"${userStringFor}" risulta essere una ${strType(userStringFor)} Palindroma`;
+    responseFor.textContent = `"${userStringFor}" risulta essere una ${strType(
+      userStringFor
+    )} Palindroma`;
     // console.log(userStringFor);//DEBUG
   } else {
-    responseFor.textContent = `"${userStringFor}" risulta non essere una ${strType(userStringFor)} Palindroma`;
+    responseFor.textContent = `"${userStringFor}" risulta non essere una ${strType(
+      userStringFor
+    )} Palindroma`;
   }
 });
-
 
 //PARTE 2 ESERCIZIO
 function randomNum(min, max) {
   return Math.round(Math.random() * (max - min)) + min;
+}
+
+function isEven(n) {
+  return n % 2 === 0;
+}
+
+function userWin(tot, userChoise) {
+  return (isEven(tot) && userChoise) || (!isEven(tot) && !userChoise);
+}
+
+function printScore(printBox) {
+  if (userWin(sum, evenChoose)) {
+    return (printBox.textContent = `You Win!!! Hai scelto 
+        ${evenChoose ? "pari" : "dispari"} 
+        inserendo il numero ${num}, mentre il computer ha generato randomicamente 
+        ${computerNum}. Sommando i due numeri otteniamo ${sum} che è un valore ${
+      isEven(sum) ? "pari" : "dispari"
+    }`);
+  }
+  return (printBox.textContent = `You Lose!!! Hai scelto 
+  ${evenChoose ? "pari" : "dispari"} 
+  inserendo il numero ${num}, mentre il computer ha generato randomicamente 
+  ${computerNum}. Sommando i due numeri otteniamo ${sum} che è un valore ${
+    isEven(sum) ? "pari" : "dispari"
+  }`);
 }
 
 const even = document.getElementById("even");
@@ -99,6 +130,7 @@ const winner = document.getElementById("winner");
 const myMin = 1;
 const myMax = 5;
 let evenChoose = true;
+let sum = 0;
 
 even.addEventListener("click", () => {
   evenChoose = true;
@@ -116,32 +148,8 @@ sendNumber.addEventListener("click", () => {
   {
     addResponseClass(winner);
     computerNum = randomNum(myMin, myMax);
-    let sum = num + computerNum;
+    sum = num + computerNum;
 
-    if (sum % 2 === 0) {
-      if (evenChoose) {
-        winner.textContent = `You Win!!! Hai scelto 
-        ${(evenChoose) ? "pari" : "dispari"} 
-        inserendo il numero ${num}, mentre il computer ha generato randomicamente 
-        ${computerNum}. Sommando i due numeri otteniamo ${sum} che è un valore ${(sum%2===0) ? "pari" : "dispari"}`;
-      } else {
-        winner.textContent = `You Lose!!! Hai scelto 
-        ${(evenChoose) ? "pari" : "dispari"} 
-        inserendo il numero ${num}, mentre il computer ha generato randomicamente 
-        ${computerNum}. Sommando i due numeri otteniamo ${sum} che è un valore ${(sum%2===0) ? "pari" : "dispari"}`;
-      }
-    } else {
-      if (evenChoose) {
-        winner.textContent = `You Lose!!! Hai scelto 
-        ${(evenChoose) ? "pari" : "dispari"} 
-        inserendo il numero ${num}, mentre il computer ha generato randomicamente 
-        ${computerNum}. Sommando i due numeri otteniamo ${sum} che è un valore ${(sum%2===0) ? "pari" : "dispari"}`;
-      } else {
-        winner.textContent = `You Win!!! Hai scelto 
-        ${(evenChoose) ? "pari" : "dispari"} 
-        inserendo il numero ${num}, mentre il computer ha generato randomicamente 
-        ${computerNum}. Sommando i due numeri otteniamo ${sum} che è un valore ${(sum%2===0) ? "pari" : "dispari"}`;
-      }
-    }
+    printScore(winner);
   }
 });
