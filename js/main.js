@@ -17,8 +17,7 @@ function isPalindrome(e) {
   // console.log(e);//DEBUG
   eReverse = e.split("").reverse().join("");
   // console.log(eReverse);//DEBUG
-  if (e === eReverse) return true;
-  return false;
+  return e === eReverse;
 }
 function isPalindromeFor(e) {
   let nospace;
@@ -33,10 +32,7 @@ for(i=0;i<e.length;i++){
     nospace+= e[i];
   }
 }
-  if(nospace.toLowerCase()===reverseStr.toLowerCase()){
-    return true;
-  }
-  return false;
+  return nospace.toLowerCase()===reverseStr.toLowerCase();
 }
 function addResponseClass(e) {
   e.classList.add(
